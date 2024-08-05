@@ -1,25 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="hero-wrap js-fullheight" style="margin-top: -25px; background-image:  url('{{ asset('assets/images/image_2.jpg')}}');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -37,40 +18,20 @@
     <section class="ftco-section ftco-services">
     	<div class="container">
     		<div class="row">
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/services-1.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">Sheraton</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                <p>Location: Cairo.</p>
-                <p><a href="rooms.html" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/image_4.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">The Plaza Hote</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-				<p>Location: New york.</p>
-                <p><a href="#" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/image_4.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">The Ritz</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-				<p>Location: Paris.</p>
-                <p><a href="#" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>      
-          </div>
-        </div>
+				@foreach ($hotels as $hotel)
+					<div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+						<div class="d-block services-wrap text-center">
+						<div class="img" style="background-image: url('{{ asset('assets/images/'.$hotel->image.'')}}');"></div>
+						<div class="media-body py-4 px-3">
+							<h3 class="heading">{{ $hotel->name }}</h3>
+							<p>{{ $hotel->description }}</p>
+							<p>Location: {{ $hotel->location }}</p>
+							<p><a href="rooms.html" class="btn btn-primary">View rooms</a></p>
+						</div>
+						</div>      
+					   </div>
+					</div>
+				@endforeach
     	</div>
     </section>
 
